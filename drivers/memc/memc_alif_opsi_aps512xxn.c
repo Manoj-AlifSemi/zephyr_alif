@@ -451,11 +451,11 @@ static int memc_alif_ospi_aps512xxn_init(const struct device *dev)
 		ram_addr_ctrl.addr_upper_shift  = 12;
 		ram_addr_ctrl.addr_mask         = 0x7FF;
 		if (config->cs_pin == 0) {
-			ram_addr_ctrl.ss0_array_mode_en = 0;
-			ram_addr_ctrl.ss1_array_mode_en = 1;
-		} else if (config->cs_pin == 1) {
 			ram_addr_ctrl.ss0_array_mode_en = 1;
 			ram_addr_ctrl.ss1_array_mode_en = 0;
+		} else if (config->cs_pin == 1) {
+			ram_addr_ctrl.ss0_array_mode_en = 0;
+			ram_addr_ctrl.ss1_array_mode_en = 1;
 		} else {
 			LOG_ERR("Invalid chip select value");
 			return -EINVAL;
